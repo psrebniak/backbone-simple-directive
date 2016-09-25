@@ -1,4 +1,4 @@
-# backbone-deep-directive
+# backbone-simple-directive
 This project provide simple version of directives for Backbone.
 
 ## Directives
