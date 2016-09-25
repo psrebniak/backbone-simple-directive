@@ -1,5 +1,5 @@
 # backbone-simple-directive
-This project provide simple version of directives for Backbone.
+This project provide simple version of directives for Backbone. 
 
 ## Directives
 
@@ -50,29 +50,31 @@ DOM:
 Javascript: 
 ```
 var myView = Backbone.View.extend({
-  initialize: function() {
-  	// setup $model if not exist, bind directives
-  	// if Backbone.DeepModel is not found, use Backbone.Model
-  	this.setupDirective();
+	modelName: 'myScope',
+	initialize: function() {
+	  	// setup $model if not exist, bind directives
+	  	// if Backbone.DeepModel is not found, use Backbone.Model
+	  	this.setupDirective();
 
-    // update how many filters are checked
-    this.$model.on('change:filters', function(model, value) {
-    	model.set('numberOfFilters', _.filter(value, function(item) {
-      	return item;
-      }).length);
-    });
+	    // update how many filters are checked
+	    this.$model.on('change:filters', function(model, value) {
+	    	model.set('numberOfFilters', _.filter(value, function(item) {
+	      	return item;
+	      }).length);
+	    });
+	}
 });
 
 new myView({
-	modelName: 'myScope',
 	el: 'body'
 });
 
 ```
+JsFiddle: http://jsfiddle.net/sn3n04qx/2/
 
 ## Demo
 
-JsFiddle:
+JsFiddle: http://jsfiddle.net/5f63xznx/10/
 
 ## Writing own directives: 
 
