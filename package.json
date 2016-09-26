@@ -4,7 +4,8 @@
   "description": "This project provide simple version of directives for Backbone.",
   "main": "backbone-simple-directive.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "uglifyjs backbone-simple-directive.js --mangle --source-map backbone-simple-directive.min.map -o backbone-simple-directive.min.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,14 @@
   "bugs": {
     "url": "https://github.com/psrebniak/backbone-simple-directive/issues"
   },
-  "homepage": "https://github.com/psrebniak/backbone-simple-directive#readme"
+  "homepage": "https://github.com/psrebniak/backbone-simple-directive#readme",
+  "devDependencies": {
+    "uglifyjs": "^2.4.10"
+  },
+  "files": [
+    "backbone-simple-directive.js",
+    "backbone-simple-directive.min.js",
+    "backbone-simple-directive.min.map",
+    "LICENSE"
+  ]
 }

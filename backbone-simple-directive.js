@@ -1,5 +1,18 @@
-(function ($, _, Backbone) {
-	// use DeepModel if exist, Model otherways
+;(function (factory) {
+
+    // backbone way to define root element
+    var root = (typeof self == 'object' && self.self === self && self) ||
+        (typeof global == 'object' && global.global === global && global);
+
+    // AMD support
+    if (typeof define === 'function' && define.amd) {
+        define(['underscore', 'jquery', 'backbone'], factory);
+    } else {
+        factory(root._, (root.jQuery || root.Zepto || root.ender || root.$), root.Backbone);
+    }
+
+})(function (_, $, Backbone) {
+    // use DeepModel if exist, Model otherways
     var Model = Backbone.DeepModel || Backbone.Model;
 
     // can register own directives - open to extend
@@ -23,58 +36,56 @@
         model.on('change:' + attributeValue, callback);
     };
 
-	Backbone.Directives['data-change'] = function($item, attributeValue, model) {
-    // update view on model change
-      var callbackModel = function(model, value) {
-      	var tagName = $item.prop('tagName');
-		if ($item.attr('type') === 'checkbox') {
-          $item.prop('checked', !!value);
-        } else if ($item.attr('type') === 'radio') {
-          if (value == $item.val()) {
-          	$item.prop('checked', true);
-          }
-        } else if (tagName === 'INPUT' || tagName === 'SELECT') {
-          $item.val(value);
-        }
-      };
-      model.on('change:' + attributeValue, callbackModel);
-      
-      // update model on view change
-      var callbackView = function() {
-      	if ($item.attr('type') === 'checkbox') {
-        	model.set(attributeValue, $item.prop('checked'));
-        } else {
-        	model.set(attributeValue, $item.val());
-        }
-      }
-      $item.on('change input blur', callbackView);
-      
-      // set initial
-      callbackView();
+    Backbone.Directives['data-change'] = function ($item, attributeValue, model) {
+        // update view on model change
+        var callbackModel = function (model, value) {
+            var tagName = $item.prop('tagName');
+            if ($item.attr('type') === 'checkbox') {
+                $item.prop('checked', !!value);
+            } else if ($item.attr('type') === 'radio') {
+                if (value == $item.val()) {
+                    $item.prop('checked', true);
+                }
+            } else if (tagName === 'INPUT' || tagName === 'SELECT') {
+                $item.val(value);
+            }
+        };
+        model.on('change:' + attributeValue, callbackModel);
+
+        // update model on view change
+        var callbackView = function () {
+            if ($item.attr('type') === 'checkbox') {
+                model.set(attributeValue, $item.prop('checked'));
+            } else {
+                model.set(attributeValue, $item.val());
+            }
+        };
+        $item.on('change input blur', callbackView);
+
+        // set initial
+        callbackView();
     };
-    
-  	// update class based on model
+
+    // update class based on model
     Backbone.Directives['data-class'] = function ($item, attributeValue, model) {
         var json = {};
         try {
-        	json = JSON.parse(attributeValue);
-        } catch(exception) {
-        	throw ("Backbone-simple-directive JSON parse error: " + exception.toString());
+            json = JSON.parse(attributeValue);
+        } catch (exception) {
+            throw ("Backbone-simple-directive JSON parse error: " + exception.toString());
         }
-        _.each(json, function(value, key) {
-        	model.on('change:' + value.toString(), function(model, value) {
-          	$item.toggleClass(key, !!value);
-          });
+        _.each(json, function (value, key) {
+            model.on('change:' + value.toString(), function (model, value) {
+                $item.toggleClass(key, !!value);
+            });
         });
     };
 
     // set up view
     Backbone.View.prototype.setupDirective = function () {
-
         // model must have own name
         if (!_.isString(this.modelName)) {
             throw "Backbone-simple-directive error: modelName is required for directiveView";
-            return false;
         }
 
         // set up model if not exist
@@ -88,7 +99,7 @@
 
         // for each found element
         _.each($elements, function (item) {
-        	// set current element 
+            // set current element
             $(item).data('model-bound', true);
 
             // for each directive
@@ -102,5 +113,8 @@
                 func($(item), $(item).attr(name), this.$model);
             }, this);
         }, this);
-    }
-})($ || jQuery, _, Backbone);
+    };
+
+    // return directive object
+    return Backbone.Directives;
+});
