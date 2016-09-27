@@ -9,7 +9,8 @@ This project provide simple version of directives for Backbone.
 * `data-visible` - on model change, set element visibility
 * `data-content` - on model change, set element content
 * `data-change` - two way binding - update view when model changed, update model when view changed
-* `data-class` - toggle class when model change. Param should be valid JSON with flatten object, where key is class and value is model value to listen on. 
+* `data-class` - toggle class when model change. Param should be valid JSON with flatten object, where key is class and value is model value to listen on.
+* `data-ui` - set element in view as `this.$ui[attributeValue]` 
 
 
 ## Install
@@ -29,6 +30,7 @@ It is recommended (not required) to use package `backbone-deep-model` for listen
 
 DOM: 
 ```
+<div data-model="myScope" data-ui="$example"></div>
 <span data-model="myScope" data-visible="numberOfFilters">
   Selected filters:
   <span data-model="myScope" data-content="numberOfFilters"></span>
@@ -65,6 +67,8 @@ var myView = Backbone.View.extend({
 	      	return item;
 	      }).length);
 	    });
+	    
+	    this.$ui.$example.append('example content');
 	}
 });
 
@@ -91,7 +95,7 @@ Just add new key into `Backbone.Directives` e.g.
  * @param attributeValue - attribute value
  * @param model - Backbone.DeepModel or Backbone.Model instance
  */
-Backbone.Directives['data-my-content'] = function ($item, attributeValue, model) {
+Backbone.Directives['data-my-content'] = function ($item, attributeValue, view, model) {
 	// what to do
     var callback = function (model, value) {
         $item.html(value);

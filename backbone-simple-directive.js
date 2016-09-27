@@ -19,7 +19,7 @@
     Backbone.Directives = {};
 
     // on model change, put model value into html
-    Backbone.Directives['data-content'] = function ($item, attributeValue, model) {
+    Backbone.Directives['data-content'] = function ($item, attributeValue, view, model) {
         var callbackModel = function (model, value) {
             $item.html(value);
         };
@@ -28,7 +28,7 @@
     };
 
     // on model change, use toggle to set visibility
-    Backbone.Directives['data-visible'] = function ($item, attributeValue, model) {
+    Backbone.Directives['data-visible'] = function ($item, attributeValue, view, model) {
         var callbackModel = function (model, value) {
             $item.toggle(!!value);
         };
@@ -36,7 +36,7 @@
         model.on('change:' + attributeValue, callbackModel);
     };
 
-    Backbone.Directives['data-change'] = function ($item, attributeValue, model) {
+    Backbone.Directives['data-change'] = function ($item, attributeValue, view, model) {
         // update view on model change
         var callbackModel = function (model, value) {
             var tagName = $item.prop('tagName');
@@ -67,7 +67,7 @@
     };
 
     // update class based on model
-    Backbone.Directives['data-class'] = function ($item, attributeValue, model) {
+    Backbone.Directives['data-class'] = function ($item, attributeValue, view, model) {
         var json = {};
         try {
             json = JSON.parse(attributeValue);
@@ -79,6 +79,11 @@
                 $item.toggleClass(key, !!value);
             });
         });
+    };
+
+    Backbone.Directives['data-ui'] = function ($item, attributeValue, view, model) {
+        view.$ui = view.$ui || {};
+        view.$ui[attributeValue] = $item;
     };
 
     // set up view
@@ -104,13 +109,12 @@
 
             // for each directive
             _.each(Backbone.Directives, function (func, name) {
-
                 // check we need this directive
                 if (!$(item).attr(name) || !_.isFunction(func)) {
                     return;
                 }
                 // apply that
-                func($(item), $(item).attr(name), this.$model);
+                func($(item), $(item).attr(name), this, this.$model);
             }, this);
         }, this);
     };
