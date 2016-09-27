@@ -1,4 +1,4 @@
-(function (factory) {
+((function (factory) {
 
     // backbone way to define root element
     var root = (typeof self === 'object' && self.self === self && self) ||
@@ -117,4 +117,4 @@
 
     // return directive object
     return Backbone.Directives;
-});
+}));
