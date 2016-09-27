@@ -1,3 +1,6 @@
+
+[![npm version](https://badge.fury.io/js/backbone-simple-directive.svg)](https://badge.fury.io/js/backbone-simple-directive)
+
 # backbone-simple-directive
 This project provide simple version of directives for Backbone. 
 

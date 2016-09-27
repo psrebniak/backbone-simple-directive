@@ -1,8 +1,8 @@
-;(function (factory) {
+(function (factory) {
 
     // backbone way to define root element
-    var root = (typeof self == 'object' && self.self === self && self) ||
-        (typeof global == 'object' && global.global === global && global);
+    var root = (typeof self === 'object' && self.self === self && self) ||
+        (typeof global === 'object' && global.global === global && global);
 
     // AMD support
     if (typeof define === 'function' && define.amd) {
@@ -12,7 +12,7 @@
     }
 
 })(function (_, $, Backbone) {
-    // use DeepModel if exist, Model otherways
+    // use DeepModel if exist, Model otherwise
     var Model = Backbone.DeepModel || Backbone.Model;
 
     // can register own directives - open to extend
@@ -20,20 +20,20 @@
 
     // on model change, put model value into html
     Backbone.Directives['data-content'] = function ($item, attributeValue, model) {
-        var callback = function (model, value) {
+        var callbackModel = function (model, value) {
             $item.html(value);
         };
-        callback(model, model.get(attributeValue));
-        model.on('change:' + attributeValue, callback);
+        callbackModel(model, model.get(attributeValue));
+        model.on('change:' + attributeValue, callbackModel);
     };
 
     // on model change, use toggle to set visibility
     Backbone.Directives['data-visible'] = function ($item, attributeValue, model) {
-        var callback = function (model, value) {
+        var callbackModel = function (model, value) {
             $item.toggle(!!value);
         };
-        callback(model, model.get(attributeValue));
-        model.on('change:' + attributeValue, callback);
+        callbackModel(model, model.get(attributeValue));
+        model.on('change:' + attributeValue, callbackModel);
     };
 
     Backbone.Directives['data-change'] = function ($item, attributeValue, model) {
@@ -43,7 +43,7 @@
             if ($item.attr('type') === 'checkbox') {
                 $item.prop('checked', !!value);
             } else if ($item.attr('type') === 'radio') {
-                if (value == $item.val()) {
+                if (value === $item.val()) {
                     $item.prop('checked', true);
                 }
             } else if (tagName === 'INPUT' || tagName === 'SELECT') {
