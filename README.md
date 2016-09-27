@@ -1,4 +1,4 @@
-
+[![Code Climate](https://codeclimate.com/github/psrebniak/backbone-simple-directive/badges/gpa.svg)](https://codeclimate.com/github/psrebniak/backbone-simple-directive)
 [![npm version](https://badge.fury.io/js/backbone-simple-directive.svg)](https://badge.fury.io/js/backbone-simple-directive)
 
 # backbone-simple-directive
