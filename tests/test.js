@@ -117,4 +117,29 @@ define(
                 expect(view1.$ui.$item.get(0).innerHTML).toEqual('');
             });
         });
+
+        describe('data-change directive on checkboxes', function () {
+            $('body').empty().append(Templates.initial);
+            $html = $(Templates['data-change-checkbox']).appendTo('#content');
+            var view1 = new MyView({modelName: 'm1'});
+
+            it('input should have correct initial value', function () {
+                expect(view1.$model.get('F1')).toEqual(true);
+                expect(view1.$model.get('F2')).toEqual(false);
+                expect(view1.$model.get('F3')).toEqual(false);
+            });
+
+            it('view should update after model change', function () {
+                view1.$model.set({
+                    F1: false,
+                    F2: true,
+                    F3: false
+                });
+                expect(view1.$ui.$F1.prop('checked')).toEqual(false);
+                expect(view1.$ui.$F2.prop('checked')).toEqual(true);
+                expect(view1.$ui.$F3.prop('checked')).toEqual(false);
+            });
+            
+        });
+
     });
