@@ -1,11 +1,11 @@
 {
   "name": "backbone-simple-directive",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "This project provide simple version of directives for Backbone.",
   "main": "backbone-simple-directive.js",
   "scripts": {
     "test": "karma start",
-    "coverage":"codeclimate-test-reporter < coverage/report-lcovonly.txt",
+    "coverage": "codeclimate-test-reporter < coverage/report-lcovonly.txt",
     "coveralls": "cat coverage/report-lcovonly.txt | coveralls",
     "build": "uglifyjs backbone-simple-directive.js --mangle --source-map backbone-simple-directive.min.map -o backbone-simple-directive.min.js"
   },
