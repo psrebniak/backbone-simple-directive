@@ -28,6 +28,14 @@ module.exports = function (config) {
             'backbone-simple-directive.js': ['coverage']
         },
 
+        coverageReporter: {
+            dir: 'coverage',
+            reporters: [
+                { type: 'html', subdir: 'report-html' },
+                { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
+            ]
+        },
+
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
