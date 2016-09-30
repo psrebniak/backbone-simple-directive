@@ -5,6 +5,7 @@
   "main": "backbone-simple-directive.js",
   "scripts": {
     "test": "karma start",
+    "coverage":"codeclimate-test-reporter < coverage/report-lcovonly.txt",
     "coveralls": "cat coverage/report-lcovonly.txt | coveralls",
     "build": "uglifyjs backbone-simple-directive.js --mangle --source-map backbone-simple-directive.min.map -o backbone-simple-directive.min.js"
   },
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/psrebniak/backbone-simple-directive#readme",
   "devDependencies": {
     "backbone": "^1.3.3",
+    "codeclimate-test-reporter": "^0.3.3",
     "coveralls": "^2.11.14",
     "jasmine-core": "^2.5.2",
     "jquery": "^3.1.1",
