@@ -5,6 +5,13 @@ branches:
 
 language: node_js
 
+node_js:
+- 6.0.x
+- 4.4.x
+- 4.0.x
+- 0.12.x
+
+
 before_script:
   - npm install
 
