@@ -1,0 +1,16 @@
+branches:
+  only:
+    - master
+    - dev
+
+language: node_js
+
+before_script:
+  - npm install
+
+script:
+  - npm run test
+  - npm run coveralls
+
+notifications:
+  email: false
