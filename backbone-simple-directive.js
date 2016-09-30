@@ -72,9 +72,11 @@
         try {
             json = JSON.parse(attributeValue);
         } catch (exception) {
-            throw ("Backbone-simple-directive JSON parse error: " + exception.toString());
+            console && console.warn("Backbone-simple-directive JSON parse error: " + exception.toString());
+            return false;
         }
         _.each(json, function (value, key) {
+            $item.toggleClass(key, !!model.get(value));
             model.on('change:' + value.toString(), function (model, value) {
                 $item.toggleClass(key, !!value);
             });
@@ -90,7 +92,8 @@
     Backbone.View.prototype.setupDirective = function () {
         // model must have own name
         if (!_.isString(this.modelName)) {
-            throw "Backbone-simple-directive error: modelName is required for directiveView";
+            console && console.warn("Backbone-simple-directive error: modelName is required for directiveView");
+            return false;
         }
 
         // set up model if not exist
@@ -117,6 +120,8 @@
                 func($(item), $(item).attr(name), this, this.$model);
             }, this);
         }, this);
+
+        return true;
     };
 
     // return directive object
