@@ -1,5 +1,6 @@
-[![Code Climate](https://codeclimate.com/github/psrebniak/backbone-simple-directive/badges/gpa.svg)](https://codeclimate.com/github/psrebniak/backbone-simple-directive)
 [![npm version](https://badge.fury.io/js/backbone-simple-directive.svg)](https://badge.fury.io/js/backbone-simple-directive)
+[![Code Climate](https://codeclimate.com/github/psrebniak/backbone-simple-directive/badges/gpa.svg)](https://codeclimate.com/github/psrebniak/backbone-simple-directive)
+[![Test Coverage](https://codeclimate.com/github/psrebniak/backbone-simple-directive/badges/coverage.svg)](https://codeclimate.com/github/psrebniak/backbone-simple-directive/coverage)
 
 # backbone-simple-directive
 This project provide simple version of directives for Backbone. 
