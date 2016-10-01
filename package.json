@@ -6,7 +6,6 @@
   "scripts": {
     "test": "karma start",
     "coverage": "codeclimate-test-reporter < coverage/report-lcovonly.txt",
-    "coveralls": "cat coverage/report-lcovonly.txt | coveralls",
     "build": "uglifyjs backbone-simple-directive.js --mangle --source-map backbone-simple-directive.min.map -o backbone-simple-directive.min.js"
   },
   "repository": {
