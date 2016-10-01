@@ -41,10 +41,3 @@ then
 	cp node_modules/jquery/dist/jquery.js build/jquery.js
 	echo "Use jquery@$JQUERY"
 fi
-
-if [[ -n "$ZEPTO" ]]
-then
-	npm install zepto@"$ZEPTO"
-	cp node_modules/zepto/dist/zepto.js build/jquery.js
-	echo "Use zepto@$ZEPTO"
-fi
