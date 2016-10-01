@@ -12,28 +12,33 @@ if [[ -n "$UNDERSCORE" ]]
 then
 	npm install underscore@"$UNDERSCORE"
 	cp node_modules/underscore/underscore.js build/_.js
+	echo "Use underscore@$UNDERSCORE"
 fi
 
 if [[ -n "$BACKBONE" ]]
 then
 	npm install backbone@"$BACKBONE"
 	cp node_modules/backbone/backbone.js build/backbone.js
+	echo "Use backbone@$BACKBONE"
 fi
 
 if [[ -n "$LODASH" ]]
 then
 	npm install lodash@"$LODASH"
 	cp node_modules/lodash/lodash.js build/_.js
+	echo "Use lodash@$LODASH"
 fi
 
 if [[ -n "$JQUERY" ]]
 then
 	npm install jquery@"$JQUERY"
 	cp node_modules/jquery/dist/jquery.js build/jquery.js
+	echo "Use jquery@$JQUERY"
 fi
 
 if [[ -n "$ZEPTO" ]]
 then
 	npm install zepto@"$ZEPTO"
 	cp node_modules/zepto/dist/zepto.js build/jquery.js
+	echo "Use zepto@$ZEPTO"
 fi
