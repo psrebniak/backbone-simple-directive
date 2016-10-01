@@ -5,11 +5,7 @@ branches:
 
 language: node_js
 
-node_js:
-- 6.0
-- 4.4
-- 4.0
-- 0.12
+node_js: 6.0
 
 
 before_script:
