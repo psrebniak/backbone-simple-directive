@@ -26,7 +26,7 @@ fi
 if [[ -n "$LODASH" ]]
 then
 	npm install lodash@"$LODASH"
-	if [[ "$LODASH" < "4.0" ]]
+	if [[ "$LODASH" < "3.0" ]]
 	then
 	    cp node_modules/lodash/index.js build/_.js
     else
