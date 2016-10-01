@@ -85,6 +85,7 @@
         });
     };
 
+    // setup view.$ui.[attributeValue] as jQuery wrapper element
     Backbone.Directives['data-ui'] = function ($item, attributeValue, view, model) {
         view.$ui = view.$ui || {};
         view.$ui[attributeValue] = $item;
