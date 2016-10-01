@@ -17,10 +17,9 @@ require.config({
     baseUrl: '/base/',
 
     paths: {
-        'jquery': '/base/node_modules/jquery/dist/jquery',
-        'underscore': '/base/node_modules/underscore/underscore',
-        'backbone': '/base/node_modules/backbone/backbone',
-        'lodash': '/base/node_modules/lodash/lodash',
+        'jquery': '/base/build/jquery',
+        'underscore': '/base/build/_',
+        'backbone': '/base/build/backbone',
         'backbone-simple-directive': '/base/backbone-simple-directive'
     },
 

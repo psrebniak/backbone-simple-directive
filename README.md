@@ -12,18 +12,19 @@ This project provide simple version of directives for Backbone.
 * `data-content` - on model change, set element content
 * `data-change` - two way binding - update view when model changed, update model when view changed
 * `data-class` - toggle class when model change. Param should be valid JSON with flatten object, where key is class and value is model value to listen on.
-* `data-ui` - set element in view as `this.$ui[attributeValue]` 
+* `data-ui` - set element in view as `this.$ui[attributeValue]`. 
 
 
 ## Install
 
-Just include `backbone-simple-directive.js` or `backbone-simple-directive.min.js` after Backbone and Underscore. 
-It is recommended (not required) to use package `backbone-deep-model` for listening nested attributes with path syntax, e.g. `user.type`. 
+Use as AMD module or include `backbone-simple-directive.js` after Backbone and Underscore. 
+
+For listening nested attributes with path syntax, e.g. `user.type` use package `backbone-deep-model`. 
 
 ### Required
-* Underscore/Lodash
-* Backbone
-* jQuery
+* Underscore >= 1.7 / Lodash >= 3
+* Backbone >= 1.2
+* jQuery (support for 1.x, 2.x, 3.x)
 
 ### Recommended package (should be loaded before)
 * backbone-deep-model

@@ -85,6 +85,7 @@
         });
     };
 
+    // setup view.$ui.[attributeValue] as jQuery wrapper element
     Backbone.Directives['data-ui'] = function ($item, attributeValue, view, model) {
         view.$ui = view.$ui || {};
         view.$ui[attributeValue] = $item;
@@ -107,7 +108,7 @@
         // checking for data('model-bound') allows multiple call with one binding
         var $elements = _.filter(this.$('[data-model]').toArray(), function (item) {
             return $(item).attr('data-model') === this.modelName && $(item).data('model-bound') !== true;
-        }, this);
+        }.bind(this));
 
         // for each found element
         _.each($elements, function (item) {
@@ -122,8 +123,8 @@
                 }
                 // apply that
                 func($(item), $(item).attr(name), this, this.$model);
-            }, this);
-        }, this);
+            }.bind(this));
+        }.bind(this));
 
         return true;
     };

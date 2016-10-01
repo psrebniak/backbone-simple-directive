@@ -7,9 +7,28 @@ language: node_js
 
 node_js: 6.0
 
+matrix:
+  include:
+    # backbone@1.2
+    - env: BACKBONE=1.2 UNDERSCORE=1.7
+    - env: BACKBONE=1.2 UNDERSCORE=1.8
+    - env: BACKBONE=1.2 LODASH=3
+    - env: BACKBONE=1.2 LODASH=4
+    # backbone@1.3
+    - env: BACKBONE=1.3 UNDERSCORE=1.8
+    - env: BACKBONE=1.3 LODASH=3
+    - env: BACKBONE=1.3 LODASH=4
+    # jquery support
+    - env: JQUERY=1
+    - env: JQUERY=2
+    - env: JQUERY=3
 
-before_script:
-  - npm install
+cache:
+  directories:
+    - node_modules
+
+install:
+  - ./ci.sh
 
 script:
   - npm run test
