@@ -26,7 +26,6 @@
   "devDependencies": {
     "backbone": "^1.3.3",
     "codeclimate-test-reporter": "^0.3.3",
-    "coveralls": "^2.11.14",
     "jasmine-core": "^2.5.2",
     "jquery": "^3.1.1",
     "karma": "^1.3.0",
@@ -34,7 +33,6 @@
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-requirejs": "^1.1.0",
-    "lodash": "^4.16.2",
     "requirejs": "^2.3.2",
     "uglifyjs": "^2.4.10",
     "underscore": "^1.8.3"
