@@ -1,6 +1,7 @@
 #!/bin/bash
 
 npm install
+rm -rf build
 mkdir build
 
 # set defaults
@@ -25,7 +26,12 @@ fi
 if [[ -n "$LODASH" ]]
 then
 	npm install lodash@"$LODASH"
-	cp node_modules/lodash/lodash.js build/_.js
+	if [[ "$LODASH" < "4.0" ]]
+	then
+	    cp node_modules/lodash/index.js build/_.js
+    else
+        cp node_modules/lodash/lodash.js build/_.js
+    fi
 	echo "Use lodash@$LODASH"
 fi
 
