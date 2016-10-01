@@ -10,10 +10,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            {pattern: 'node_modules/jquery/dist/jquery.js', included: false},
-            {pattern: 'node_modules/underscore/underscore.js', included: false},
-            {pattern: 'node_modules/backbone/backbone.js', included: false},
-            {pattern: 'node_modules/lodash/lodash.js', included: false},
+            {pattern: 'build/*.js', included: false},
             {pattern: 'tests/*.js', included: false},
             {pattern: 'backbone-simple-directive.js', included: false},
             'tests/test-main.js'
